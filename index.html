@@ -15,17 +15,18 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'primary': '#2dd4bf', // Vibrant Teal accent
-                        'background': '#0a1118', // Very dark background
-                        'card': '#131d27', // Dark card surface
-                        'text-light': '#e2e8f0', // Lighter text
-                        'text-muted': '#94a3b8', // Slate 400
-                        
-                        // New Accent Colors for Macros
+                        /* --- Your palette --- */
+                        'primary': '#F7374F',      // Accent / brand
+                        'background': '#5A9690',   // Page background
+                        'card': '#393E46',         // Cards / surfaces
+                        'text-light': '#EEEEEE',   // Primary text
+                        'text-muted': '#EEEEEECC', // Muted text (same color with opacity)
+
+                        /* Macro accents (kept distinct for readability) */
                         'accent-calories': '#f87171', // Red 400
-                        'accent-protein': '#facc15',  // Amber 400 (Yellow)
-                        'accent-carbs': '#38bdf8',   // Sky 400 (Light Blue)
-                        'accent-fat': '#a855f7',     // Violet 500 (Purple)
+                        'accent-protein': '#facc15',  // Amber 400
+                        'accent-carbs': '#38bdf8',    // Sky 400
+                        'accent-fat': '#a855f7',      // Violet 500
                     }
                 }
             }
@@ -40,7 +41,7 @@
         }
         .data-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px -3px rgba(194, 184, 76, 0.1);
         }
         .table-container {
             /* Enable horizontal scrolling for small screens */
@@ -52,7 +53,7 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased p-4 sm:p-8">
+<body class="font-sans antialiased p-4 sm:p-8", style="background-color: #2C2C2C; color: #EEEEEE;">
 
     <div class="max-w-7xl mx-auto">
         <!-- Header Section -->
@@ -60,9 +61,6 @@
             <h1 class="text-4xl sm:text-5xl font-extrabold text-primary mb-2 tracking-tight">
                 Daily Macro and Calorie Report
             </h1>
-            <p class="text-lg text-text-muted mt-4 max-w-2xl mx-auto">
-                A detailed calculation of your daily macronutrients and calories based on the quantities and nutritional information provided.
-            </p>
         </header>
 
         <!-- Summary Metrics Section -->
@@ -223,46 +221,13 @@
                 </table>
             </div>
         </section>
-
-        <!-- Assumptions Section -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-text-light mb-4 border-b border-card/50 pb-2">
-                Assumptions for Missing Data
-            </h2>
-            <div class="bg-card p-6 rounded-xl border border-card/50">
-                <ul class="space-y-3 text-lg text-text-light">
-                    <li class="flex items-start">
-                        <span class="text-primary mr-3 text-xl">•</span>
-                        <div><span class="font-semibold">1 medium banana:</span> 105 kcal, 1g protein, 27g carbs, 0.4g fat.</div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-primary mr-3 text-xl">•</span>
-                        <div><span class="font-semibold">Roasted Chane (chickpeas):</span> Assumed 1 handful $\approx$ 30g. Based on 100g having 279 kcal, 18.8g protein, 39.6g carbs, and 5.1g fat.</div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-primary mr-3 text-xl">•</span>
-                        <div><span class="font-semibold">Peanuts:</span> Assumed 1 handful $\approx$ 30g. Based on 100g dry roasted peanuts having 587 kcal, 24g protein, 21g carbs, and 50g fat.</div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-primary mr-3 text-xl">•</span>
-                        <div><span class="font-semibold">1 tbsp Ghee (10g):</span> 90 kcal, 0g protein, 0g carbs, and 10g fat (pure fat).</div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-primary mr-3 text-xl">•</span>
-                        <div><span class="font-semibold">Sweet Potato:</span> Based on 100g cooked having 90 kcal, 2g protein, 21g carbs, and 0.2g fat.</div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-primary mr-3 text-xl">•</span>
-                        <div><span class="font-semibold">1 Date (Medjool):</span> 66.5 kcal, 0.43g protein, 18g carbs, and 0.04g fat.</div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="text-center mt-12 pt-8 border-t border-card/50">
-            <p class="text-text-muted text-sm">Calculation based on provided data and common nutritional assumptions.</p>
+        <!-- Footer Section -->
+        <footer class="text-center text-sm text-text-muted mt-12">
+            <p>Generated on 04/10/2025</p>
+            <p class="mt-1">Last Update: 04/10/2025</p>
         </footer>
+
+        
 
     </div>
 
