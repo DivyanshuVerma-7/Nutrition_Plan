@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Macronutrient and Calorie Report</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#2dd4bf', // Vibrant Teal accent
+                        'background': '#0a1118', // Very dark background
+                        'card': '#131d27', // Dark card surface
+                        'text-light': '#e2e8f0', // Lighter text
+                        'text-muted': '#94a3b8', // Slate 400
+                        
+                        // New Accent Colors for Macros
+                        'accent-calories': '#f87171', // Red 400
+                        'accent-protein': '#facc15',  // Amber 400 (Yellow)
+                        'accent-carbs': '#38bdf8',   // Sky 400 (Light Blue)
+                        'accent-fat': '#a855f7',     // Violet 500 (Purple)
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for aesthetic enhancements */
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.text-light');
+            min-height: 100vh;
+        }
+        .data-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .table-container {
+            /* Enable horizontal scrolling for small screens */
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            min-width: 800px; /* Ensure table is readable on small screens */
+        }
+    </style>
+</head>
+<body class="font-sans antialiased p-4 sm:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-primary mb-2 tracking-tight">
+                Daily Macro and Calorie Report
+            </h1>
+            <p class="text-lg text-text-muted mt-4 max-w-2xl mx-auto">
+                A detailed calculation of your daily macronutrients and calories based on the quantities and nutritional information provided.
+            </p>
+        </header>
+
+        <!-- Summary Metrics Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-text-light mb-6 border-b border-card/50 pb-2">
+                Total Daily Macros and Calories
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                <!-- Total Calories Card -->
+                <div class="data-card bg-card p-6 rounded-xl border border-primary/50 text-center">
+                    <p class="text-sm font-semibold uppercase text-text-muted mb-1">Total Calories</p>
+                    <p class="text-4xl font-extrabold text-accent-calories">3102.2</p>
+                    <p class="text-text-muted">kcal</p>
+                </div>
+
+                <!-- Total Protein Card -->
+                <div class="data-card bg-card p-6 rounded-xl border border-card/50 text-center">
+                    <p class="text-sm font-semibold uppercase text-text-muted mb-1">Total Protein</p>
+                    <p class="text-4xl font-extrabold text-accent-protein">176.7</p>
+                    <p class="text-text-muted">g</p>
+                </div>
+
+                <!-- Total Carbs Card -->
+                <div class="data-card bg-card p-6 rounded-xl border border-card/50 text-center">
+                    <p class="text-sm font-semibold uppercase text-text-muted mb-1">Total Carbs</p>
+                    <p class="text-4xl font-extrabold text-accent-carbs">373.4</p>
+                    <p class="text-text-muted">g</p>
+                </div>
+
+                <!-- Total Fat Card -->
+                <div class="data-card bg-card p-6 rounded-xl border border-card/50 text-center">
+                    <p class="text-sm font-semibold uppercase text-text-muted mb-1">Total Fat</p>
+                    <p class="text-4xl font-extrabold text-accent-fat">109.4</p>
+                    <p class="text-text-muted">g</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Detailed Calculation Table -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-text-light mb-6 border-b border-card/50 pb-2">
+                Detailed Calculation Breakdown
+            </h2>
+            <div class="table-container data-card rounded-xl">
+                <table class="w-full text-left text-text-light rounded-xl overflow-hidden">
+                    <thead class="uppercase text-sm bg-primary/70 text-text-light">
+                        <tr>
+                            <th scope="col" class="py-3 px-4">Food Item</th>
+                            <th scope="col" class="py-3 px-4">Quantity</th>
+                            <th scope="col" class="py-3 px-4 text-center">Calories (kcal)</th>
+                            <th scope="col" class="py-3 px-4 text-center">Protein (g)</th>
+                            <th scope="col" class="py-3 px-4 text-center">Carbs (g)</th>
+                            <th scope="col" class="py-3 px-4 text-center">Fat (g)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data Rows -->
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Oats</td>
+                            <td class="py-3 px-4">60g</td>
+                            <td class="py-3 px-4 text-center">244.2</td>
+                            <td class="py-3 px-4 text-center">7.1</td>
+                            <td class="py-3 px-4 text-center">41.1</td>
+                            <td class="py-3 px-4 text-center">5.7</td>
+                        </tr>
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Whey Protein</td>
+                            <td class="py-3 px-4">2 scoops</td>
+                            <td class="py-3 px-4 text-center">258.0</td>
+                            <td class="py-3 px-4 text-center">48.0</td>
+                            <td class="py-3 px-4 text-center">8.2</td>
+                            <td class="py-3 px-4 text-center">3.8</td>
+                        </tr>
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Bananas</td>
+                            <td class="py-3 px-4">4 medium</td>
+                            <td class="py-3 px-4 text-center">420.0</td>
+                            <td class="py-3 px-4 text-center">4.0</td>
+                            <td class="py-3 px-4 text-center">108.0</td>
+                            <td class="py-3 px-4 text-center">1.6</td>
+                        </tr>
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Roasted Chane</td>
+                            <td class="py-3 px-4">60g</td>
+                            <td class="py-3 px-4 text-center">167.4</td>
+                            <td class="py-3 px-4 text-center">11.3</td>
+                            <td class="py-3 px-4 text-center">23.8</td>
+                            <td class="py-3 px-4 text-center">3.1</td>
+                        </tr>
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Paneer</td>
+                            <td class="py-3 px-4">200g</td>
+                            <td class="py-3 px-4 text-center">624.0</td>
+                            <td class="py-3 px-4 text-center">40.0</td>
+                            <td class="py-3 px-4 text-center">8.0</td>
+                            <td class="py-3 px-4 text-center">48.0</td>
+                        </tr>
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Peanuts</td>
+                            <td class="py-3 px-4">30g</td>
+                            <td class="py-3 px-4 text-center">176.1</td>
+                            <td class="py-3 px-4 text-center">7.2</td>
+                            <td class="py-3 px-4 text-center">6.3</td>
+                            <td class="py-3 px-4 text-center">15.0</td>
+                        </tr>
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Ghee</td>
+                            <td class="py-3 px-4">10g</td>
+                            <td class="py-3 px-4 text-center">90.0</td>
+                            <td class="py-3 px-4 text-center">0.0</td>
+                            <td class="py-3 px-4 text-center">0.0</td>
+                            <td class="py-3 px-4 text-center">10.0</td>
+                        </tr>
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Cow Milk</td>
+                            <td class="py-3 px-4">500ml</td>
+                            <td class="py-3 px-4 text-center">340.0</td>
+                            <td class="py-3 px-4 text-center">16.5</td>
+                            <td class="py-3 px-4 text-center">25.0</td>
+                            <td class="py-3 px-4 text-center">17.5</td>
+                        </tr>
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Sweet Potato</td>
+                            <td class="py-3 px-4">300g</td>
+                            <td class="py-3 px-4 text-center">270.0</td>
+                            <td class="py-3 px-4 text-center">6.0</td>
+                            <td class="py-3 px-4 text-center">63.0</td>
+                            <td class="py-3 px-4 text-center">0.6</td>
+                        </tr>
+                        <tr class="bg-card border-b border-background/50 hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Dates</td>
+                            <td class="py-3 px-4">5 dates</td>
+                            <td class="py-3 px-4 text-center">332.5</td>
+                            <td class="py-3 px-4 text-center">2.2</td>
+                            <td class="py-3 px-4 text-center">90.0</td>
+                            <td class="py-3 px-4 text-center">0.2</td>
+                        </tr>
+                        <tr class="bg-card hover:bg-card/70">
+                            <td class="py-3 px-4 font-semibold">Chicken (raw)</td>
+                            <td class="py-3 px-4">150g</td>
+                            <td class="py-3 px-4 text-center">180.0</td>
+                            <td class="py-3 px-4 text-center">34.5</td>
+                            <td class="py-3 px-4 text-center">0.0</td>
+                            <td class="py-3 px-4 text-center">3.9</td>
+                        </tr>
+
+                        <!-- Total Row -->
+                        <tr class="bg-primary/50 text-white font-extrabold text-lg">
+                            <td class="py-4 px-4" colspan="2">TOTAL</td>
+                            <td class="py-4 px-4 text-center">3102.2</td>
+                            <td class="py-4 px-4 text-center">176.7</td>
+                            <td class="py-4 px-4 text-center">373.4</td>
+                            <td class="py-4 px-4 text-center">109.4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Assumptions Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-text-light mb-4 border-b border-card/50 pb-2">
+                Assumptions for Missing Data
+            </h2>
+            <div class="bg-card p-6 rounded-xl border border-card/50">
+                <ul class="space-y-3 text-lg text-text-light">
+                    <li class="flex items-start">
+                        <span class="text-primary mr-3 text-xl">•</span>
+                        <div><span class="font-semibold">1 medium banana:</span> 105 kcal, 1g protein, 27g carbs, 0.4g fat.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-primary mr-3 text-xl">•</span>
+                        <div><span class="font-semibold">Roasted Chane (chickpeas):</span> Assumed 1 handful $\approx$ 30g. Based on 100g having 279 kcal, 18.8g protein, 39.6g carbs, and 5.1g fat.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-primary mr-3 text-xl">•</span>
+                        <div><span class="font-semibold">Peanuts:</span> Assumed 1 handful $\approx$ 30g. Based on 100g dry roasted peanuts having 587 kcal, 24g protein, 21g carbs, and 50g fat.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-primary mr-3 text-xl">•</span>
+                        <div><span class="font-semibold">1 tbsp Ghee (10g):</span> 90 kcal, 0g protein, 0g carbs, and 10g fat (pure fat).</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-primary mr-3 text-xl">•</span>
+                        <div><span class="font-semibold">Sweet Potato:</span> Based on 100g cooked having 90 kcal, 2g protein, 21g carbs, and 0.2g fat.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-primary mr-3 text-xl">•</span>
+                        <div><span class="font-semibold">1 Date (Medjool):</span> 66.5 kcal, 0.43g protein, 18g carbs, and 0.04g fat.</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 pt-8 border-t border-card/50">
+            <p class="text-text-muted text-sm">Calculation based on provided data and common nutritional assumptions.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
